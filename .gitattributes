@@ -1,0 +1,6 @@
+# Linguist: keep the language badge honest — Python is the product; markdown
+# registries/docs and the HTML visualizer asset are not code.
+*.md linguist-documentation
+registry/** linguist-documentation
+assets/** linguist-vendored
+eval/*.jsonl linguist-generated
