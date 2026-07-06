@@ -28,9 +28,12 @@ when a real Phase 1 failure justifies it.
 ## 30-second quickstart
 
 ```bash
-# from the repo root (Windows; uv 0.10+, Ollama with qwen3:8b running locally)
+# from the repo root (Windows; uv 0.10+)
 uv venv --python 3.11 .venv
 uv pip install --python .venv/Scripts/python.exe -r requirements.txt
+
+# choose your model — local Ollama, OpenAI, Claude, OpenRouter, or any OpenAI-compatible endpoint
+.venv/Scripts/python.exe -m pickysteve.setup
 
 # calibrate the reranker floor on the labeled set
 .venv/Scripts/python.exe eval/calibrate.py
@@ -38,6 +41,12 @@ uv pip install --python .venv/Scripts/python.exe -r requirements.txt
 # run one request
 .venv/Scripts/python.exe -m pickysteve "review my Rust endpoint for security and REST design"
 ```
+
+**Bring your own model.** `python -m pickysteve.setup` asks which model to use and saves it.
+Runs on anything that speaks the OpenAI-compatible API: local **Ollama** (offline, no key),
+**OpenAI**, **Claude**, **Gemini**, **Llama**, etc. via OpenRouter / LiteLLM / their native
+compat endpoints. The published benchmarks were measured on local `qwen3:8b`; a different model
+just needs a `eval/calibrate.py` re-run.
 
 > **Note:** this is currently a `uv` / `git clone` install. There is no PyPI package yet, so
 > `uvx pickysteve` and `pipx install pickysteve` do not exist. If that changes, this section

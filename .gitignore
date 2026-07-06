@@ -15,3 +15,6 @@ eval/__pycache__/
 
 # heavy source PNGs — WebP committed instead
 assets/img/*.png
+
+# model choice written by the setup wizard
+.env

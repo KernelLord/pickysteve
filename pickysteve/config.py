@@ -11,11 +11,34 @@ import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def _load_dotenv(path: Path) -> None:
+    """Load a .env written by `python -m pickysteve.setup`, so the chosen model persists
+    without exporting env vars each shell. Real environment variables always take priority."""
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, _, v = line.partition("=")
+        os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+
+
+_load_dotenv(ROOT / ".env")
+
+# True once the user has picked a model (via the setup wizard's .env or an explicit env var).
+# When False, the code still runs on the local-Ollama fallback, but `python -m pickysteve`
+# nudges the user to run `python -m pickysteve.setup` and choose.
+MODEL_CONFIGURED = (ROOT / ".env").exists() or bool(os.getenv("PS_LLM_BASE_URL"))
+
 REGISTRY_DIR = Path(os.getenv("PS_REGISTRY_DIR", str(ROOT / "registry")))
 LOG_PATH = Path(os.getenv("PS_LOG_PATH", str(ROOT / "logs" / "runs.jsonl")))
 INDEX_CACHE = ROOT / "logs" / ".index_cache.json"
 
-# --- Model client (OpenAI-compatible; defaults to local Ollama) ---------------
+# --- Model client (OpenAI-compatible; run `python -m pickysteve.setup` to choose) ----------
+# Fallback if the setup wizard hasn't been run: local Ollama, so it works offline with no key.
 LLM_BASE_URL = os.getenv("PS_LLM_BASE_URL", "http://localhost:11434/v1")
 LLM_API_KEY = os.getenv("PS_LLM_API_KEY", "ollama")  # Ollama ignores it; SDK needs non-empty
 ROUTER_MODEL = os.getenv("PS_ROUTER_MODEL", "qwen3:8b")   # cheap/fast (Haiku-tier role)

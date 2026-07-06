@@ -94,6 +94,12 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
     request = " ".join(args.request)
 
+    from . import config
+    if not config.MODEL_CONFIGURED:
+        print("[i] No model chosen yet — falling back to local Ollama (qwen3:8b).\n"
+              "    Run `python -m pickysteve.setup` to pick your model "
+              "(OpenAI, Claude, OpenRouter, local, ...).\n", file=sys.stderr)
+
     eng = Engine()
     if eng.stale_units:
         print(f"[!] stale units since last index: {', '.join(eng.stale_units)}\n", file=sys.stderr)
