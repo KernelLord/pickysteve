@@ -6,9 +6,13 @@
   <em>He's picky about what he loads into context — including what he refuses to load.</em>
 </p>
 
-<!-- HERO GIF TODO: assets/demo.gif does not exist yet. Record a ~15s terminal cast or a
-     capture of the live visualizer (assets/pickysteve_live.html) showing a request move
-     through gate -> router -> retrieve -> rerank -> judge -> assembly, then drop it here. -->
+<h3 align="center">▶ Watch the trailer</h3>
+<p align="center">
+  <a href="assets/trailer/pickysteve_trailer.mp4">
+    <img src="assets/img/trailer-thumb.webp" alt="Watch the PickySteve trailer" width="820">
+  </a>
+  <br><sub><a href="assets/trailer/pickysteve_trailer.mp4">▶ click to play (assets/trailer/pickysteve_trailer.mp4)</a></sub>
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="license: MIT">
