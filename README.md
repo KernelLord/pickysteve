@@ -1,11 +1,9 @@
 <p align="center">
-  <img src="assets/img/logo.webp" alt="PickySteve logo" width="200">
+  <img src="assets/img/social-banner.webp" alt="PickySteve — picks the right skill for your coding agent" width="820">
 </p>
 
-<h1 align="center">PickySteve</h1>
-
 <p align="center">
-  <em>Picks the right skill for your coding agent. Picky about what he loads into context, including what he refuses to load.</em>
+  <em>Picky about what he loads into context, including what he refuses to load.</em>
 </p>
 
 ### ▶ Watch the trailer
