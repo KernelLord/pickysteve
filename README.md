@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/img/social-banner.png" alt="PickySteve — picks the right skill for your coding agent" width="820">
+  <img src="assets/img/social-banner.webp" alt="PickySteve — picks the right skill for your coding agent" width="820">
 </p>
 
 <p align="center">
@@ -135,16 +135,16 @@ the fixes) added these mechanisms. See [`FINDINGS.md`](FINDINGS.md) for the full
 All numbers below are from this repo's own eval docs and logs — no synthetic marketing numbers.
 
 <p align="center">
-  <img src="assets/img/hero-100x10.png" alt="100% × 10 consecutive runs — Base 26/26, Harder 42/42, Held-out 47/47" width="720">
+  <img src="assets/img/hero-100x10.webp" alt="100% × 10 consecutive runs — Base 26/26, Harder 42/42, Held-out 47/47" width="720">
 </p>
 
 <p align="center">
-  <img src="assets/img/bench-ablation.png" alt="Reranker alone 71% vs full PickySteve pipeline 96% on 24 confusable skill pairs" width="49%">
-  <img src="assets/img/bench-suites.png" alt="Routing accuracy across suites: Base, Harder, Held-out 100%; Adversarial 96%" width="49%">
+  <img src="assets/img/bench-ablation.webp" alt="Reranker alone 71% vs full PickySteve pipeline 96% on 24 confusable skill pairs" width="49%">
+  <img src="assets/img/bench-suites.webp" alt="Routing accuracy across suites: Base, Harder, Held-out 100%; Adversarial 96%" width="49%">
 </p>
 <p align="center">
-  <img src="assets/img/bench-security.png" alt="Security gate: 100% attack detection, 0 bypasses, 0% false positives, 180-payload red-team" width="49%">
-  <img src="assets/img/bench-twotier.png" alt="Two-tier conformal gate: 96% recall at 38% of frontier cost" width="49%">
+  <img src="assets/img/bench-security.webp" alt="Security gate: 100% attack detection, 0 bypasses, 0% false positives, 180-payload red-team" width="49%">
+  <img src="assets/img/bench-twotier.webp" alt="Two-tier conformal gate: 96% recall at 38% of frontier cost" width="49%">
 </p>
 
 **Routing accuracy — the trifecta** ([DEEP_CONTEXT.md](DEEP_CONTEXT.md)):

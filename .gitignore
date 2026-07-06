@@ -12,3 +12,6 @@ logs/
 eval/_*.jsonl
 .mcp.json
 eval/__pycache__/
+
+# heavy source PNGs — WebP committed instead
+assets/img/*.png
