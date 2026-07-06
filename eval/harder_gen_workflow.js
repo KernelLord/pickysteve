@@ -27,8 +27,8 @@ const PAIRS = [
   ['csrf-protection', 'webhook-signature-verification'],
   ['distributed-lock-redis', 'optimistic-concurrency-control'],
 ]
-const REG = 'C:/Users/lasha/Desktop/pickysteve/eval/sim_registry'
-const KG = 'C:/Users/lasha/Desktop/pickysteve/eval/skill_kg.json'
+const REG = '<PROJECT_ROOT>/eval/sim_registry'
+const KG = '<PROJECT_ROOT>/eval/skill_kg.json'
 
 const GEN_SCHEMA = {
   type: 'object',
