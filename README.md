@@ -25,10 +25,6 @@ This repo is Phase 1 (MVP), built to an architecture spec. Phase 2 work (tracing
 standing eval harness, credential vault, sandbox) is not built yet. Each piece gets added only
 when a real Phase 1 failure justifies it.
 
-> [!WARNING]
-> PickySteve can make mistakes. Do not trust it blindly on critical tasks. It routes to a
-> *plausible* skill, not a guaranteed-correct one. Review what it picks before acting on it.
-
 ## 30-second quickstart
 
 ```bash
@@ -231,6 +227,10 @@ a retrieval was right, only that it was plausible. All retrieved content is trea
 data, never as instructions.
 
 ## Known limitations
+
+> [!WARNING]
+> PickySteve can make mistakes. Do not trust it blindly on critical tasks. It routes to a
+> *plausible* skill, not a guaranteed-correct one. Review what it picks before acting on it.
 
 - **qwen3-calibrated thresholds.** The reranker floor and the Tier-3 escalation gray band are
   calibrated against `qwen3:8b` as router/judge. Swapping the local model requires re-running
