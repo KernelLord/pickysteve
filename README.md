@@ -15,7 +15,7 @@ https://github.com/user-attachments/assets/8750946b-36be-4c48-bf73-79513451d1f5
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="license: MIT">
   <img src="https://img.shields.io/badge/python-3.11%2B-blue" alt="python 3.11+">
-  <img src="https://img.shields.io/badge/CI-expected%20passing-yellow" alt="CI: expected passing (repo not yet pushed)">
+  <img src="https://github.com/KernelLord/pickysteve/actions/workflows/ci.yml/badge.svg" alt="CI">
 </p>
 
 PickySteve is a lightweight orchestration layer. A cheap model figures out which skill a request
