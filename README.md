@@ -10,11 +10,14 @@
 
 ### ▶ Watch the trailer
 
-<p align="center">
-  <a href="https://github.com/user-attachments/assets/8750946b-36be-4c48-bf73-79513451d1f5">
-    <img src="assets/img/trailer-thumb.webp" alt="Watch the PickySteve trailer" width="820">
-  </a>
-</p>
+<div align="center">
+<details>
+<summary><img src="assets/img/trailer-thumb.webp" alt="Click to play the PickySteve trailer" width="820"></summary>
+
+https://github.com/user-attachments/assets/8750946b-36be-4c48-bf73-79513451d1f5
+
+</details>
+</div>
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="license: MIT">
