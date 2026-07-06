@@ -8,14 +8,7 @@
 
 ### ▶ Watch the trailer
 
-<div align="center">
-<details>
-<summary><img src="assets/img/trailer-thumb.webp" alt="Click to play the PickySteve trailer" width="820"></summary>
-
 https://github.com/user-attachments/assets/8750946b-36be-4c48-bf73-79513451d1f5
-
-</details>
-</div>
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="license: MIT">
@@ -31,6 +24,10 @@ on every request.
 This repo is Phase 1 (MVP), built to an architecture spec. Phase 2 work (tracing platform,
 standing eval harness, credential vault, sandbox) is not built yet. Each piece gets added only
 when a real Phase 1 failure justifies it.
+
+> [!WARNING]
+> PickySteve can make mistakes. Do not trust it blindly on critical tasks. It routes to a
+> *plausible* skill, not a guaranteed-correct one. Review what it picks before acting on it.
 
 ## 30-second quickstart
 
