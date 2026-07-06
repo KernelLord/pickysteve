@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/img/social-banner.webp" alt="PickySteve — picks the right skill for your coding agent" width="820">
+  <img src="assets/img/social-banner.jpg" alt="PickySteve — picks the right skill for your coding agent" width="820">
 </p>
 
 <p align="center">
