@@ -1,0 +1,53 @@
+{"query": "my rust code has too many clones and unwrap calls, review it", "skill_id": "rust-reviewer", "label": "good"}
+{"query": "cargo build fails with E0502 cannot borrow as mutable", "skill_id": "rust-build-resolver", "label": "good"}
+{"query": "my react component re-renders on every keystroke", "skill_id": "react-reviewer", "label": "good"}
+{"query": "this postgres query does a seq scan and is slow", "skill_id": "postgres-optimizer", "label": "good"}
+{"query": "check my login endpoint for security vulnerabilities", "skill_id": "security-reviewer", "label": "good"}
+{"query": "stop prompt injection in my agent's retrieved documents", "skill_id": "prompt-injection-defense", "label": "good"}
+{"query": "review my REST API pagination and status codes", "skill_id": "api-design-reviewer", "label": "good"}
+{"query": "why isn't my website getting indexed by google", "skill_id": "seo-audit", "label": "good"}
+{"query": "help me structure my seed stage investor pitch deck", "skill_id": "create-pitch-deck", "label": "good"}
+{"query": "how much should I raise and what is the dilution to the cap table", "skill_id": "cfo-advisor", "label": "good"}
+{"query": "map out my competitors and find white space positioning", "skill_id": "competitive-landscape", "label": "good"}
+{"query": "deploy my anchor program to solana mainnet safely", "skill_id": "solana-deploy", "label": "good"}
+{"query": "audit my AMM for oracle manipulation and reentrancy", "skill_id": "defi-amm-security", "label": "good"}
+{"query": "my docker image is 2GB make it smaller and hardened", "skill_id": "docker-optimizer", "label": "good"}
+{"query": "make my web form WCAG AA accessible for screen readers", "skill_id": "accessibility-audit", "label": "good"}
+{"query": "find the real bottleneck in my slow backend service", "skill_id": "performance-profiler", "label": "good"}
+{"query": "write the failing tests first for this new feature", "skill_id": "tdd-workflow", "label": "good"}
+{"query": "change my database schema without downtime", "skill_id": "database-migrations", "label": "good"}
+{"query": "research the latest findings on this topic across sources", "skill_id": "deep-research", "label": "good"}
+{"query": "make this marketing copy sound like our brand voice", "skill_id": "brand-voice", "label": "good"}
+{"query": "plan a go to market launch campaign for our product", "skill_id": "marketing-campaign", "label": "good"}
+{"query": "production is down how do I run this incident and postmortem", "skill_id": "incident-response", "label": "good"}
+{"query": "design retrieval and reranking for my RAG system with a confidence threshold", "skill_id": "rag-architecture", "label": "good"}
+{"query": "review my rust ownership and error handling", "skill_id": "rust-reviewer", "label": "good"}
+{"query": "my rust code has too many clones and unwrap calls", "skill_id": "seo-audit", "label": "bad"}
+{"query": "deploy my anchor program to solana mainnet", "skill_id": "cfo-advisor", "label": "bad"}
+{"query": "make my docker image smaller", "skill_id": "create-pitch-deck", "label": "bad"}
+{"query": "check my login endpoint for vulnerabilities", "skill_id": "brand-voice", "label": "bad"}
+{"query": "help me structure my seed pitch deck", "skill_id": "postgres-optimizer", "label": "bad"}
+{"query": "WCAG accessibility audit of my form", "skill_id": "solana-deploy", "label": "bad"}
+{"query": "production incident response runbook", "skill_id": "seo-audit", "label": "bad"}
+{"query": "my react component re-renders too much", "skill_id": "defi-amm-security", "label": "bad"}
+{"query": "research a topic across multiple web sources", "skill_id": "docker-optimizer", "label": "bad"}
+{"query": "this postgres query is doing a slow seq scan", "skill_id": "marketing-campaign", "label": "bad"}
+{"query": "stop prompt injection in retrieved agent content", "skill_id": "create-pitch-deck", "label": "bad"}
+{"query": "how much to raise and dilution math", "skill_id": "rust-reviewer", "label": "bad"}
+{"query": "design my REST API pagination", "skill_id": "accessibility-audit", "label": "bad"}
+{"query": "write tests first before the code", "skill_id": "competitive-landscape", "label": "bad"}
+{"query": "schema migration with no downtime", "skill_id": "brand-voice", "label": "bad"}
+{"query": "map competitors and positioning", "skill_id": "rust-build-resolver", "label": "bad"}
+{"query": "AMM oracle manipulation flash loan", "skill_id": "seo-audit", "label": "bad"}
+{"query": "make this copy sound like our brand", "skill_id": "postgres-optimizer", "label": "bad"}
+{"query": "why is google not indexing my pages", "skill_id": "cfo-advisor", "label": "bad"}
+{"query": "cargo build error E0502 borrow checker", "skill_id": "marketing-campaign", "label": "bad"}
+{"query": "plan a product launch campaign", "skill_id": "database-migrations", "label": "bad"}
+{"query": "find the bottleneck in my slow service", "skill_id": "create-pitch-deck", "label": "bad"}
+{"query": "design RAG retrieval and reranking", "skill_id": "incident-response", "label": "bad"}
+{"query": "audit my AMM smart contract for exploits", "skill_id": "docker-optimizer", "label": "bad"}
+{"query": "make my web app load faster for users", "skill_id": "postgres-optimizer", "label": "bad"}
+{"query": "review my code for general quality issues", "skill_id": "security-reviewer", "label": "bad"}
+{"query": "help me deploy my web application to production", "skill_id": "solana-deploy", "label": "bad"}
+{"query": "set up monitoring and alerts for my service", "skill_id": "incident-response", "label": "bad"}
+{"query": "improve my landing page conversion", "skill_id": "seo-audit", "label": "bad"}

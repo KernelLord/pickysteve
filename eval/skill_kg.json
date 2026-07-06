@@ -1,0 +1,258 @@
+[
+ {
+  "a": "gpu-oom-inference",
+  "b": "pod-oomkilled",
+  "sim": 0.755,
+  "distinguisher": "GPU OOM Inference fails at CUDA device memory allocation during compute kernels; Pod OOMKilled occurs when system memory accounting (heap, buffers, cache) across a process exceeds Linux cgroup limits enforced by the kernel.",
+  "a_signal": "Error originates from CUDA runtime (e.g., \"CUDA out of memory\") during tensor operations or model inference, independent of container memory resource limits, and batch-size reduction would resolve it.",
+  "b_signal": "Container process is forcibly killed by kernel cgroup enforcement, visible as \"OOMKilled\" in pod status/events, and affects all memory types; resolving requires increasing container memory limits or reducing total process footprint."
+ },
+ {
+  "a": "fulltext-bm25-tuning",
+  "b": "hybrid-search-fusion",
+  "sim": 0.694,
+  "distinguisher": "BM25 tuning optimizes a single lexical retrieval layer in isolation, while hybrid fusion merges results from two heterogeneous retrieval mechanisms (keyword + vector).",
+  "a_signal": "Problem describes tuning BM25 parameters (k1, b), stemming behavior, analyzer configuration, or stop-word handling to improve keyword-only search relevance.",
+  "b_signal": "Problem describes combining or re-ranking results from both keyword (BM25) and vector (semantic) retrieval methods using fusion techniques like reciprocal rank fusion."
+ },
+ {
+  "a": "cdn-cache-invalidation",
+  "b": "read-replica-lag",
+  "sim": 0.675,
+  "distinguisher": "CDN cache invalidation is stale HTTP responses cached at the edge; read-replica lag is stale data state in the replica database. Decisive scope test: a shared edge cache makes ALL users see the same stale content, while replica lag affects ONLY the user who just wrote (read-after-write, own-write invisible for seconds).",
+  "a_signal": "Origin/API returns fresh data when queried directly, but MANY/ALL users across regions see the identical stale content, resolving after cache purge or TTL expiry (minutes).",
+  "b_signal": "Write succeeds on primary database, but the WRITER's immediate read returns the old value while OTHER users are unaffected; querying the primary/write node confirms the write exists; converges in seconds without any purge."
+ },
+ {
+  "a": "database-deadlocks",
+  "b": "distributed-lock-redis",
+  "sim": 0.672,
+  "distinguisher": "Database deadlocks are circular lock-dependency cycles detected and aborted BY the database engine; Redis locks are external mutual-exclusion primitives coordinating BETWEEN independent processes/nodes without database involvement.",
+  "a_signal": "Transaction is aborted with a 'deadlock detected' error from the database engine itself, indicating two transactions acquired locks in opposite order creating a circular wait the database can detect.",
+  "b_signal": "Multiple independent processes or services in a cluster must coordinate to ensure only one accesses a critical section at a time (e.g., singleton cron, shared background job), where processes do not share transaction semantics."
+ },
+ {
+  "a": "grpc-deadline-propagation",
+  "b": "tcp-connection-reuse",
+  "sim": 0.663,
+  "distinguisher": "Deadline propagation cascades request timeout semantics through RPC layers to fail fast on slow downstreams; connection reuse prevents socket resource exhaustion from frequent TCP open-close cycles.",
+  "a_signal": "Problem: requests hang indefinitely or cascade through service chains because timeout constraints are not propagated across RPC hops, allowing any slow hop to starve the entire chain.",
+  "b_signal": "Problem: TCP ephemeral ports exhaust or TIME_WAIT sockets accumulate even when individual requests complete within acceptable latency, indicating connection lifecycle churn rather than timeout semantics."
+ },
+ {
+  "a": "hybrid-search-fusion",
+  "b": "vector-hnsw-tuning",
+  "sim": 0.661,
+  "distinguisher": "Hybrid-search-fusion integrates output from independent keyword and vector retrieval systems; HNSW-tuning optimizes the graph-traversal parameters of a single vector index's ANN algorithm.",
+  "a_signal": "Merging ranked results from separate BM25 and vector indices using reciprocal rank fusion, weighted combination, or other fusion techniques on two independent retrieval streams.",
+  "b_signal": "Tuning HNSW parameters (ef_search, ef_construction, M) to optimize recall-latency tradeoffs or improve nearest-neighbor quality within a single vector search index."
+ },
+ {
+  "a": "blue-green-deploy",
+  "b": "feature-flag-rollout",
+  "sim": 0.655,
+  "distinguisher": "Blue-green deployment switches 100% of traffic between two complete pre-built environments at the infrastructure layer; feature flag rollout gradually exposes a fraction of requests to new code within the same environment at the application logic layer.",
+  "a_signal": "Need to cutover all traffic to a new environment at once, or can describe two identical production-like environments (blue and green) that the load balancer toggles between.",
+  "b_signal": "Need to expose the change to 5%, 10%, or another percentage of live traffic/users first before rolling to everyone, or require an instant flag-based kill-switch without re-routing infrastructure."
+ },
+ {
+  "a": "fulltext-bm25-tuning",
+  "b": "vector-hnsw-tuning",
+  "sim": 0.648,
+  "distinguisher": "BM25 ranks keywords through inverted-index term statistics; HNSW ranks embeddings through graph-traversal distance minimization in vector space.",
+  "a_signal": "Term frequency weighting miscalibration, stemming/analyzer behavior drift, or keyword relevance imbalance diagnosed via token-level statistics.",
+  "b_signal": "Recall-latency tradeoff degradation, missing neighbors in result sets, or HNSW traversal parameter imbalance (ef_search underprovisioned vs ef_construction overfitting) diagnosed via recall measurement or graph connectivity analysis."
+ },
+ {
+  "a": "http2-head-of-line",
+  "b": "tcp-connection-reuse",
+  "sim": 0.645,
+  "distinguisher": "HTTP/2 HOL blocking is intra-connection (one stream stalls others at the multiplexing layer); TCP reuse is inter-connection (reducing overhead and resource churn from creating/destroying connections).",
+  "a_signal": "One slow or blocked stream prevents other multiplexed streams from making progress on the same TCP connection, or response latency spikes when concurrent requests share a connection and one is delayed.",
+  "b_signal": "Ephemeral port exhaustion, TIME_WAIT socket accumulation, or connection establishment latency dominates when applications create new TCP connections per request instead of pooling or keep-alive."
+ },
+ {
+  "a": "webhook-idempotency",
+  "b": "webhook-signature-verification",
+  "sim": 0.611,
+  "distinguisher": "Idempotency deduplicates repeated deliveries of the same legitimate event from your provider; signature verification authenticates that the webhook truly originated from your provider, not an attacker.",
+  "a_signal": "The webhook was delivered or processed multiple times, causing duplicate effects (charged twice, email sent twice), or the provider explicitly retried the same event.",
+  "b_signal": "The requirement is to prove the webhook's authenticity, prevent forged/spoofed webhooks, or validate that a request really came from the trusted provider."
+ },
+ {
+  "a": "gpu-oom-inference",
+  "b": "inference-batching-throughput",
+  "sim": 0.61,
+  "distinguisher": "GPU-OOM inference is a memory capacity exhaustion failure at compute time; inference batching throughput is a request-scheduling optimization to maximize utilization of available capacity.",
+  "a_signal": "CUDA out-of-memory exception or memory allocation failure when the model and its activations exceed available GPU VRAM during a forward pass.",
+  "b_signal": "Low inference throughput (RPS) with sufficient GPU memory remaining and available compute, indicating requests are under-batched and could be packed more efficiently."
+ },
+ {
+  "a": "cumulative-layout-shift",
+  "b": "image-lazy-loading",
+  "sim": 0.608,
+  "distinguisher": "CLS prevents layout reflow by pre-allocating space for images; lazy-loading accelerates initial load by deferring downloads of non-visible images.",
+  "a_signal": "Content unexpectedly shifts or jumps after images finish loading, causing user mis-clicks — the problem is missing space reservation, not deferral timing.",
+  "b_signal": "Offscreen images below the fold slow down the initial page load metric because they're downloaded before the viewport needs them — the problem is premature loading, not layout reflow."
+ },
+ {
+  "a": "grpc-deadline-propagation",
+  "b": "http2-head-of-line",
+  "sim": 0.577,
+  "distinguisher": "Deadline propagation cascades timeout constraints through nested RPC calls (application layer); head-of-line blocking serializes HTTP/2 streams due to packet-level ordering on a single TCP connection (transport layer).",
+  "a_signal": "A slow or unresponsive downstream service causes the caller to hang indefinitely rather than failing fast; solution involves setting and propagating timeout values through chained RPC hops.",
+  "b_signal": "One HTTP/2 stream stalls other active streams on the same TCP connection due to packet loss or ordering; problem occurs when multiple concurrent streams exist on a single physical connection."
+ },
+ {
+  "a": "cdn-cache-invalidation",
+  "b": "http-client-caching",
+  "sim": 0.571,
+  "distinguisher": "CDN cache invalidation manages staleness at the shared network-edge cache layer affecting all users; HTTP client caching manages staleness at individual end-user browser caches. Decisive test: if the affected user's OWN hard refresh / browser cache clear fixes it instantly while neighbors on the same network were never stale, the cache lives in that one browser (client caching) — mentioning that content is 'served through a CDN' does not make it a CDN problem; a shared edge cache would make everyone in the region stale until a server-side purge.",
+  "a_signal": "Multiple users globally (different regions, browsers, devices) simultaneously report identical stale content; purging the CDN fixes it for everyone; individual browser cache clears have no effect.",
+  "b_signal": "A single user sees stale content; a hard refresh (Ctrl+Shift+R) or browser cache clear immediately resolves it for that user; others may see fresh data."
+ },
+ {
+  "a": "csrf-protection",
+  "b": "webhook-signature-verification",
+  "sim": 0.569,
+  "distinguisher": "CSRF protects browser-based user sessions from cross-site social tricks using cookies; Webhook Signature Verification proves third-party requests are genuine using cryptographic secrets.",
+  "a_signal": "User is tricked by attacker into making unwanted request from browser while authenticated; prevent state-change without user's real intention.",
+  "b_signal": "External provider or attacker directly POST to your webhook endpoint; verify HMAC signature matches shared secret to prove origin."
+ },
+ {
+  "a": "distributed-lock-redis",
+  "b": "optimistic-concurrency-control",
+  "sim": 0.563,
+  "distinguisher": "Distributed lock prevents concurrent execution through mutual exclusion; optimistic concurrency control detects and rejects conflicting writes at commit via version validation.",
+  "a_signal": "Problem requires ensuring only one process/node executes a critical section at a time—the risk is concurrent execution, not concurrent writes to shared data.",
+  "b_signal": "Problem involves multiple concurrent writers independently modifying the same record and detecting/preventing lost updates through version or timestamp fields."
+ },
+ {
+  "a": "database-deadlocks",
+  "b": "optimistic-concurrency-control",
+  "sim": 0.558,
+  "distinguisher": "Deadlock is a circular lock-hold dependency detected and aborted by the database; optimistic concurrency solves the lost-update problem via application-layer version comparison with no locks held.",
+  "a_signal": "Database throws 'deadlock detected' exception or error code, indicating two or more transactions are stuck in circular lock dependency (T1 holds A and waits for B; T2 holds B and waits for A).",
+  "b_signal": "Multiple concurrent writers load and modify the same record without blocking, requiring version/etag columns and application-side compare-and-swap logic to detect and reject stale writes before commit."
+ },
+ {
+  "a": "hpa-autoscaling",
+  "b": "pod-oomkilled",
+  "sim": 0.555,
+  "distinguisher": "HPA adds/removes pod replicas to meet demand; OOMKilled terminates a container that exceeded its individual memory limit.",
+  "a_signal": "Replica count increasing dynamically in response to CPU/memory/custom metrics rising, with no container restart events or OOMKilled status in pod events.",
+  "b_signal": "Container restarting with OOMKilled exit reason in pod events while deployment replica count remains static."
+ },
+ {
+  "a": "jwt-key-rotation",
+  "b": "oauth-pkce",
+  "sim": 0.554,
+  "distinguisher": "JWT Key Rotation manages issuer-side signing key transitions to preserve token validation across key changes; PKCE protects client-side authorization-code exchange to prevent interception and replay.",
+  "a_signal": "Requirement involves rotating/versioning the server's token-signing keys, maintaining JWKS endpoints with multiple active key IDs (kids), or keeping existing signed tokens valid through key changes.",
+  "b_signal": "Requirement involves preventing authorization-code interception in public clients (SPA or mobile), protecting the token exchange handshake against code theft, or implementing code_challenge/code_verifier verification."
+ },
+ {
+  "a": "hpa-autoscaling",
+  "b": "pod-disruption-budget",
+  "sim": 0.54,
+  "distinguisher": "HPA scales replica count in response to application metrics; PDB limits how many replicas can be simultaneously evicted during infrastructure maintenance.",
+  "a_signal": "CPU/memory usage rising, custom metrics breaching thresholds, current replicas insufficient for load, or need to handle traffic spikes dynamically.",
+  "b_signal": "Node drains or cluster upgrades causing multiple pod evictions at once, service degradation during rolling node updates, or need to preserve minimum availability during planned maintenance."
+ },
+ {
+  "a": "payment-gateway-integration",
+  "b": "webhook-idempotency",
+  "sim": 0.527,
+  "distinguisher": "Payment-gateway-integration handles direct API calls to process transactions; webhook-idempotency prevents duplicate side effects from the same webhook being delivered multiple times on retry.",
+  "a_signal": "Problem requires calling a payment provider API to create charges, manage subscriptions, store payment methods, or issue refunds.",
+  "b_signal": "Problem describes receiving the same webhook event multiple times (due to provider retry on timeout/error) causing duplicate charges or side effects without dedup protection."
+ },
+ {
+  "a": "cdn-cache-invalidation",
+  "b": "dns-propagation-ttl",
+  "sim": 0.525,
+  "distinguisher": "DNS propagation routes clients to the correct IP address of the origin server, while CDN cache invalidation serves fresh HTTP responses from edge servers to clients already reaching the correct origin.",
+  "a_signal": "Users reach the website but see stale content (HTML, JSON, assets), while direct queries to the origin server or bypass headers show fresh data—fix by purging cache keys or lowering edge TTL.",
+  "b_signal": "Same hostname resolves to different IP addresses depending on the resolver location or time, indicating old DNS records still cached—fix by waiting for TTL expiry or flushing resolver caches."
+ },
+ {
+  "a": "database-connection-pooling",
+  "b": "tcp-connection-reuse",
+  "sim": 0.523,
+  "distinguisher": "Database connection pooling limits concurrent logical connections to a database server for reuse by the application, while TCP connection reuse prevents ephemeral port exhaustion and TIME_WAIT accumulation by keeping the underlying sockets alive across requests.",
+  "a_signal": "Connection pool exhaustion, waiting for available slot, or \"max connections\" errors from a database client library (pgbouncer, connection pool size config).",
+  "b_signal": "TIME_WAIT socket accumulation, ephemeral port exhaustion, or inability to open new sockets at the OS level when connection churn is high."
+ },
+ {
+  "a": "distributed-tracing",
+  "b": "structured-logging",
+  "sim": 0.501,
+  "distinguisher": "Distributed tracing maps request causality across process boundaries via context propagation; structured logging organizes fields within individual log entries.",
+  "a_signal": "Need to correlate the same logical request as it flows through multiple services and visualize service-to-service call chains and latency.",
+  "b_signal": "Need individual log output to be machine-parseable with consistent queryable fields or to apply uniform levels and redaction policies within a service."
+ },
+ {
+  "a": "pod-disruption-budget",
+  "b": "pod-oomkilled",
+  "sim": 0.482,
+  "distinguisher": "Pod Disruption Budget controls voluntary evictions during planned operational events, while OOMKilled is involuntary termination when a container exceeds its memory limit.",
+  "a_signal": "Multiple healthy replicas evicting together during node drains or cluster upgrades, with status showing Evicted and timing correlated to maintenance windows.",
+  "b_signal": "Container exit code indicating out-of-memory kill, repeated restarts, and memory usage patterns showing the process consuming beyond its memory limit."
+ },
+ {
+  "a": "cumulative-layout-shift",
+  "b": "js-bundle-splitting",
+  "sim": 0.477,
+  "distinguisher": "CLS prevents rendering reflow from unspecified async resource dimensions; bundle splitting reduces initial JavaScript parse latency by deferring non-critical code.",
+  "a_signal": "Problem describes elements jumping, moving, or shifting on screen as images/ads/iframes load, causing users to mis-tap or lose visual focus—the visual layout is changing after paint.",
+  "b_signal": "Problem describes slow initial page load time, large JavaScript payload, or slow time-to-interactive before the app becomes usable—the JavaScript is blocking initial execution."
+ },
+ {
+  "a": "metrics-cardinality",
+  "b": "pod-oomkilled",
+  "sim": 0.471,
+  "distinguisher": "Metrics-cardinality causes OOM in the metrics storage layer via unbounded labels creating millions of time series; pod-oomkilled causes OOM in the application container layer via exceeding the Kubernetes memory limit.",
+  "a_signal": "Problem describes high-cardinality labels (user_id, request_id, session_id) added to metrics causing Prometheus/metrics storage disk or memory exhaustion due to time-series explosion.",
+  "b_signal": "Problem shows Kubernetes OOMKilled container termination event with application restarts driven by the pod exceeding its configured memory limit."
+ },
+ {
+  "a": "hpa-autoscaling",
+  "b": "kafka-consumer-lag",
+  "sim": 0.47,
+  "distinguisher": "HPA provisions more pod replicas to increase stateless request-handling concurrency; consumer lag is the offset gap showing unconsumed messages accumulating in a broker.",
+  "a_signal": "Pod CPU/memory metrics exceed threshold and replica count scales horizontally—insufficient concurrent request handlers.",
+  "b_signal": "Consumer offset falls behind broker's latest offset; messages queue up unprocessed in topic partitions."
+ },
+ {
+  "a": "database-connection-pooling",
+  "b": "graphql-n-plus-one",
+  "sim": 0.467,
+  "distinguisher": "Connection pool exhaustion blocks concurrent requests due to insufficient connection objects; N+1 multiplies individual queries during resolver execution due to missing batching.",
+  "a_signal": "Error messages like \"could not acquire connection\" or \"connection pool exhausted\"; request backlog/queueing before queries execute; increasing pool size or idle timeout tunes it away; problem persists regardless of query structure.",
+  "b_signal": "Query explosion per request (hundreds of SELECT statements for one page load); query count scales linearly with fetched data size; resolver/ORM uses unbatched loops instead of dataloader or batch fetches; problem eliminable by batching or JOIN optimization."
+ },
+ {
+  "a": "streaming-exactly-once",
+  "b": "webhook-idempotency",
+  "sim": 0.461,
+  "distinguisher": "Streaming exactly-once prevents duplicates from internal worker restarts within the topology; webhook idempotency prevents duplicates from external HTTP retries by the remote sender.",
+  "a_signal": "References to worker/processor restarts, checkpoint recovery, mid-batch crashes, or state recovery within the streaming system itself (Flink, Kafka, internal fault domains).",
+  "b_signal": "References to HTTP retries from an external provider, timeout/5xx errors causing resend, or the webhook receiver having no control over when/if the sender retries (Stripe, external APIs retrying on your endpoint)."
+ },
+ {
+  "a": "http-client-caching",
+  "b": "http2-head-of-line",
+  "sim": 0.457,
+  "distinguisher": "HTTP client caching determines response freshness (Cache-Control/ETag), while HTTP/2 head-of-line blocking determines if one slow stream serializes other concurrent streams on the same connection.",
+  "a_signal": "Problem describes stale/outdated responses served, cache revalidation failures, or Cache-Control/ETag freshness decisions determining what the client sees.",
+  "b_signal": "Problem describes one HTTP/2 stream being slow and blocking progress of other requests multiplexed on the same connection, or multiplexing not providing parallelism benefit."
+ },
+ {
+  "a": "embedding-model-selection",
+  "b": "vector-hnsw-tuning",
+  "sim": 0.457,
+  "distinguisher": "Model selection determines the encoder that creates vectors; HNSW tuning adjusts the approximate-search graph parameters that trade recall against latency during retrieval. Decisive test: run an EXACT (brute-force/flat) similarity scan on the same vectors — if exact search finds the right items but the ANN index misses them, the vectors are fine and it is HNSW tuning; if even exact search returns semantically wrong neighbors, the embeddings themselves are wrong and it is model selection.",
+  "a_signal": "Even an exhaustive exact-similarity scan returns semantically wrong neighbors — the vectors themselves lack the meaning (domain vocabulary mismatch, multilingual incompatibility, model-level domain fit); re-embedding with a better-suited model changes results.",
+  "b_signal": "An exact/brute-force scan DOES return the right items but the approximate index misses them, often after a latency-motivated query-time change; widening search breadth (ef_search) restores them at a latency cost."
+ }
+]

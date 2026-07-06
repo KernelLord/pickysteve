@@ -1,0 +1,29 @@
+name: CI
+
+# Honest scope: this only runs the Ollama-free, model-download-free regression suite
+# (eval/test_gate_security.py). Everything else in tests/ and eval/ needs a live local
+# Ollama (router/judge calls) and/or first-run Hugging Face downloads (reranker,
+# embeddings) and is not yet wired into CI — see CONTRIBUTING.md for how to run those
+# locally before a routing-quality PR.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  security-gate-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run Ollama-free security-gate regression tests
+        run: python eval/test_gate_security.py

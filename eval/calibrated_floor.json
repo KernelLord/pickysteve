@@ -1,0 +1,11 @@
+{
+  "floor": 0.14845843613147736,
+  "separation": "overlapping (Youden J=0.966)",
+  "good_kept": 1.0,
+  "bad_admitted": 0.034482758620689655,
+  "good_stats": "n=24 min=0.1485 p25=0.8249 median=0.9507 p75=0.9776 max=0.9923 mean=0.8339",
+  "bad_stats": "n=29 min=0.0000 p25=0.0000 median=0.0000 p75=0.0001 max=0.2331 mean=0.0090",
+  "rerank_model": "BAAI/bge-reranker-v2-m3",
+  "n_good": 24,
+  "n_bad": 29
+}

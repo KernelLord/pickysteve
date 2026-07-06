@@ -1,0 +1,9 @@
+# PickySteve — Phase 1 (MVP) dependencies.
+# Deliberately minimal, per spec §6.5: a model API client, an embedding lib,
+# a BM25 lib, a reranker (sentence-transformers), and the real security gate.
+
+stackone-defender[onnx]   # 2.1 security gate (real ONNX classifier, NOT a regex placeholder)
+rank-bm25                  # 2.3 keyword retrieval (BM25)
+sentence-transformers     # 2.3 embeddings + 2.4 cross-encoder reranker (pulls torch CPU)
+openai                    # 2.2/2.6 model client (OpenAI-compatible; points at local Ollama)
+numpy                     # score fusion / vector math

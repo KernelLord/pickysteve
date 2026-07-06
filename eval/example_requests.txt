@@ -1,0 +1,26 @@
+# 18 real example requests drawn from the kind of work this registry serves.
+# Lines starting with # are comments. Expected behavior is noted for the reviewer
+# but NOT given to the system.
+#
+# --- clear single-skill hits ---
+My Rust service clones strings everywhere and I see a bunch of .unwrap() calls — can you review it?
+cargo won't compile: "cannot borrow `*self` as mutable more than once at a time". help me fix it
+Our React dashboard lags — typing in the search box re-renders the whole list. What's wrong?
+This query takes 4 seconds and EXPLAIN shows a sequential scan over 2M rows.
+Before launch, audit our auth endpoints for the usual OWASP stuff — IDOR, injection, JWT issues.
+I'm building an AI agent that reads emails and web pages. How do I stop prompt injection from the content it pulls in?
+Review the design of our REST API — are the status codes and pagination sane?
+We launched two months ago and Google still isn't indexing most pages. Audit the technical SEO.
+Help me put together the slide order for our seed deck for the a16z application.
+How much should we raise to hit 18 months of runway, and what does that do to the cap table?
+I need to deploy our Anchor program to Solana mainnet without bricking the upgrade authority.
+Audit our AMM contract — I'm worried about flash-loan oracle manipulation and read-only reentrancy.
+Our production checkout is throwing 500s right now. Walk me through handling this incident.
+Make the signup form meet WCAG 2.2 AA — keyboard and screen-reader support especially.
+# --- multi-skill (should surface >1 survivor + a compatibility check) ---
+Review my new Rust API endpoint for both security holes and REST design problems.
+# --- multi-file skill (should collapse rag-architecture's two files into ONE skill) ---
+I'm designing a RAG system — how should I handle retrieval and reranking with a confidence threshold?
+# --- off-domain (should return no-confident-match, NOT a forced wrong pick) ---
+Write me a haiku about the first snow of winter.
+What's a good recipe for Georgian khachapuri?

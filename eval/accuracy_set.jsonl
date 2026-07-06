@@ -1,0 +1,40 @@
+{"request": "There's a data race in my Rust async code, can you look it over", "expected": ["rust-reviewer"], "acceptable": [], "category": "single-easy"}
+{"request": "The compiler says my trait doesn't satisfy the bound and the build is broken", "expected": ["rust-build-resolver"], "acceptable": ["rust-reviewer"], "category": "single-easy"}
+{"request": "My useEffect fires twice on mount and I can't figure out why", "expected": ["react-reviewer"], "acceptable": [], "category": "single-easy"}
+{"request": "Adding an index didn't help, the planner still picks a full table scan", "expected": ["postgres-optimizer"], "acceptable": [], "category": "single-easy"}
+{"request": "Pen-test our file upload endpoint before we ship it", "expected": ["security-reviewer"], "acceptable": [], "category": "single-easy"}
+{"request": "Our chatbot reads customer support tickets — how do we keep a malicious ticket from hijacking it", "expected": ["prompt-injection-defense"], "acceptable": ["security-reviewer"], "category": "single-easy"}
+{"request": "Are my error envelopes and HTTP verbs idiomatic for a public API", "expected": ["api-design-reviewer"], "acceptable": [], "category": "single-easy"}
+{"request": "Our blog posts just don't show up in search results, what's the technical problem", "expected": ["seo-audit"], "acceptable": [], "category": "single-easy"}
+{"request": "I'm pitching angel investors next week and need the story tightened", "expected": ["create-pitch-deck"], "acceptable": [], "category": "single-easy"}
+{"request": "What's our monthly burn and how many months of cash do we have left", "expected": ["cfo-advisor"], "acceptable": [], "category": "single-easy"}
+{"request": "Who else is building this and where can we actually win", "expected": ["competitive-landscape"], "acceptable": [], "category": "single-easy"}
+{"request": "We're pushing our program live on chain tomorrow, what should I double-check", "expected": ["solana-deploy"], "acceptable": [], "category": "single-easy"}
+{"request": "users are getting drained when they swap tokens, I think it's a pricing bug in the pool", "expected": ["defi-amm-security"], "acceptable": [], "category": "single-oblique"}
+{"request": "the container takes forever to pull and the image is enormous", "expected": ["docker-optimizer"], "acceptable": [], "category": "single-oblique"}
+{"request": "blind users using a screen reader can't get through our checkout", "expected": ["accessibility-audit"], "acceptable": [], "category": "single-oblique"}
+{"request": "the endpoint is slow but I genuinely don't know where the time is going", "expected": ["performance-profiler"], "acceptable": [], "category": "single-oblique"}
+{"request": "I want the tests to drive this feature instead of being bolted on later", "expected": ["tdd-workflow"], "acceptable": [], "category": "single-oblique"}
+{"request": "we need to add a column to a 500 million row table without taking the site down", "expected": ["database-migrations"], "acceptable": [], "category": "single-oblique"}
+{"request": "dig up everything published about this new regulation in the past year", "expected": ["deep-research"], "acceptable": [], "category": "single-oblique"}
+{"request": "rewrite this so it sounds like us and not like a generic press release", "expected": ["brand-voice"], "acceptable": [], "category": "single-oblique"}
+{"request": "the payment service is erroring for every customer right now and I'm on call", "expected": ["incident-response"], "acceptable": [], "category": "single-oblique"}
+{"request": "I'm building a retrieval system and need to pick chunking and a reranker", "expected": ["rag-architecture"], "acceptable": [], "category": "single-oblique"}
+{"request": "review my new payments endpoint for security holes and whether the REST design is clean", "expected": ["security-reviewer", "api-design-reviewer"], "acceptable": ["rust-reviewer"], "category": "compound"}
+{"request": "plan a launch campaign and make the copy match our brand voice", "expected": ["marketing-campaign", "brand-voice"], "acceptable": [], "category": "compound"}
+{"request": "audit our AMM contract for exploits and then help me deploy it to mainnet", "expected": ["defi-amm-security", "solana-deploy"], "acceptable": [], "category": "compound"}
+{"request": "the query is slow and separately we need to migrate the schema without downtime", "expected": ["postgres-optimizer", "database-migrations"], "acceptable": [], "category": "compound"}
+{"request": "build out the pitch deck and the competitive landscape slide for it", "expected": ["create-pitch-deck", "competitive-landscape"], "acceptable": [], "category": "compound"}
+{"request": "my rust web handler is slow and also has pretty sketchy error handling", "expected": ["performance-profiler", "rust-reviewer"], "acceptable": [], "category": "compound"}
+{"request": "make my app faster", "expected": ["performance-profiler"], "acceptable": ["postgres-optimizer", "docker-optimizer"], "category": "ambiguous"}
+{"request": "help me with my database", "expected": [], "acceptable": ["postgres-optimizer", "database-migrations"], "category": "ambiguous-vague"}
+{"request": "improve my marketing", "expected": ["marketing-campaign"], "acceptable": ["brand-voice", "seo-audit"], "category": "ambiguous"}
+{"request": "review my code", "expected": [], "acceptable": ["rust-reviewer", "react-reviewer", "security-reviewer"], "category": "ambiguous-vague"}
+{"request": "what's the weather in Tbilisi tomorrow", "expected": [], "acceptable": [], "category": "off-domain"}
+{"request": "write a limerick about a cat who loves espresso", "expected": [], "acceptable": [], "category": "off-domain"}
+{"request": "translate good morning into Japanese", "expected": [], "acceptable": [], "category": "off-domain"}
+{"request": "what is 47 times 89", "expected": [], "acceptable": [], "category": "off-domain"}
+{"request": "recommend a good science fiction novel for the weekend", "expected": [], "acceptable": [], "category": "off-domain"}
+{"request": "how do I change a flat tire on a sedan", "expected": [], "acceptable": [], "category": "off-domain"}
+{"request": "help me plan a birthday party for my mom", "expected": [], "acceptable": [], "category": "off-domain"}
+{"request": "what year did the Berlin wall fall", "expected": [], "acceptable": [], "category": "off-domain"}

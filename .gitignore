@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# All generated run artifacts (caches, JSONL traces, rotated logs) stay out of git.
+logs/
+*.bak
+*.bak.json
+
+# Generated eval shards / intermediates.
+eval/_*.jsonl
+.mcp.json
+eval/__pycache__/
