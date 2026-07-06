@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/8750946b-36be-4c48-bf73-79513451d1f5
+
 <p align="center">
   <img src="assets/img/social-banner.webp" alt="PickySteve — picks the right skill for your coding agent" width="820">
 </p>
