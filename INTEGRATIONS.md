@@ -35,8 +35,8 @@ untrusted-data-boundaried skill bundle to inject) and **`list_skills()`**. The p
 the upstream model — so context-picking happens transparently on every request.
 
 Throughout, substitute your paths:
-- `PYBIN` = `C:\Users\lasha\Desktop\pickysteve\.venv\Scripts\python.exe`
-- `PROJ`  = `C:\Users\lasha\Desktop\pickysteve`
+- `PYBIN` = `<PROJECT_ROOT>\.venv\Scripts\python.exe`  (e.g. `C:\path\to\pickysteve\.venv\Scripts\python.exe`)
+- `PROJ`  = `<PROJECT_ROOT>`  (the absolute path to your cloned pickysteve repo)
 
 ---
 
