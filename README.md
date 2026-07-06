@@ -1,7 +1,3 @@
-
-
-https://github.com/user-attachments/assets/8750946b-36be-4c48-bf73-79513451d1f5
-
 <p align="center">
   <img src="assets/img/social-banner.webp" alt="PickySteve — picks the right skill for your coding agent" width="820">
 </p>
@@ -10,13 +6,9 @@ https://github.com/user-attachments/assets/8750946b-36be-4c48-bf73-79513451d1f5
   <em>He's picky about what he loads into context — including what he refuses to load.</em>
 </p>
 
-<h3 align="center">▶ Watch the trailer</h3>
-<p align="center">
-  <a href="assets/trailer/pickysteve_trailer.mp4">
-    <img src="assets/img/trailer-thumb.webp" alt="Watch the PickySteve trailer" width="820">
-  </a>
-  <br><sub><a href="assets/trailer/pickysteve_trailer.mp4">▶ click to play (assets/trailer/pickysteve_trailer.mp4)</a></sub>
-</p>
+### ▶ Watch the trailer
+
+https://github.com/user-attachments/assets/8750946b-36be-4c48-bf73-79513451d1f5
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="license: MIT">
