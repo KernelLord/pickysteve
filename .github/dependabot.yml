@@ -1,0 +1,16 @@
+version: 2
+updates:
+  # Python dependencies: opens PRs to bump vulnerable/outdated packages (addresses the
+  # dependency-graph CVEs surfaced by OSV / Scorecard).
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+  # GitHub Actions: keeps the workflow actions current (and moves toward pinned, updatable refs).
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
