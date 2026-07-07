@@ -1,0 +1,36 @@
+name: Semgrep
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * 1"   # weekly, Monday 06:00 UTC
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  semgrep:
+    name: Semgrep SAST
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    # Skip on forks (upload-sarif needs write perms the fork won't have).
+    if: github.repository == 'KernelLord/pickysteve'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Semgrep (security + Python rulesets)
+        run: semgrep scan --config p/security-audit --config p/python --sarif --output semgrep.sarif
+        env:
+          SEMGREP_RULES: "p/security-audit p/python"
+
+      - name: Upload results to code scanning
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: semgrep.sarif
