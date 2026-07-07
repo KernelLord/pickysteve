@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 6 * * 1"   # weekly, Monday 06:00 UTC
+    - cron: "0 6 * * 1"
 
 permissions:
   actions: read
@@ -16,7 +16,7 @@ permissions:
 jobs:
   scan:
     name: OSV dependency scan
-    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v2.2.2"
+    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@90b209d0ea55cea1da9fc0c4e65782cc6acb6e2e" # v2.2.2
     with:
       scan-args: |-
         --recursive

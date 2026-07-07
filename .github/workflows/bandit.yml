@@ -6,37 +6,27 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 6 * * 1"   # weekly, Monday 06:00 UTC
+    - cron: "0 6 * * 1"
 
 permissions:
   contents: read
-  security-events: write
 
 jobs:
   bandit:
     name: Bandit (Python security)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.11"
-
-      - name: Install Bandit
-        run: pip install "bandit[sarif]"
-
-      - name: Run Bandit
-        # Do not fail the job on findings; surface them in code scanning instead.
-        # Skip B110/B112 (try-except-pass / try-except-continue): PickySteve uses deliberate
-        # fail-safe fallbacks (the gate fails closed, cache and log writes are best-effort), so
-        # these are by-design here, not defects.
-        run: bandit -r pickysteve -s B110,B112 -f sarif -o bandit.sarif --exit-zero
-
-      - name: Upload results to code scanning
-        uses: github/codeql-action/upload-sarif@v3
+      - run: pip install "bandit[sarif]"
+      # Skip B110/B112 (try-except-pass): PickySteve uses deliberate fail-safe fallbacks.
+      - run: bandit -r pickysteve -s B110,B112 -f sarif -o bandit.sarif --exit-zero
+      - uses: github/codeql-action/upload-sarif@411c4c9a36b3fca4d674f06b6396b2c6d23522c6 # v3
         if: always()
         with:
           sarif_file: bandit.sarif

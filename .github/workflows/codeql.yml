@@ -6,30 +6,25 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 6 * * 1"   # weekly, Monday 06:00 UTC
+    - cron: "0 6 * * 1"
 
 permissions:
   contents: read
-  security-events: write
 
 jobs:
   analyze:
     name: Analyze (python)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: github/codeql-action/init@411c4c9a36b3fca4d674f06b6396b2c6d23522c6 # v3
         with:
           languages: python
-          # security-only: this is a security scanner, not a linter. The quality query pack
-          # produces style/lint notes (unused imports, empty-except, mixed-returns) that belong
-          # in a linter, not the Security tab.
+          # security-only: a security scanner, not a linter.
           queries: security-extended
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+      - uses: github/codeql-action/analyze@411c4c9a36b3fca4d674f06b6396b2c6d23522c6 # v3
         with:
           category: "/language:python"
