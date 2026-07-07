@@ -30,7 +30,10 @@ jobs:
 
       - name: Run Bandit
         # Do not fail the job on findings; surface them in code scanning instead.
-        run: bandit -r pickysteve -f sarif -o bandit.sarif --exit-zero
+        # Skip B110/B112 (try-except-pass / try-except-continue): PickySteve uses deliberate
+        # fail-safe fallbacks (the gate fails closed, cache and log writes are best-effort), so
+        # these are by-design here, not defects.
+        run: bandit -r pickysteve -s B110,B112 -f sarif -o bandit.sarif --exit-zero
 
       - name: Upload results to code scanning
         uses: github/codeql-action/upload-sarif@v3

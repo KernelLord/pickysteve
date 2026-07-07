@@ -109,7 +109,9 @@ def judge_skills(request: str, candidates: list[tuple[str, str]],
     # The KG distinguisher notes are part of the judge's INPUT — keying the cache without them
     # replays stale picks after a KG edit (observed: a sharpened edge fixed a live run but the
     # cached pre-edit pick kept failing the graded run).
-    nh = hashlib.sha1("\n".join(relational_notes or []).encode("utf-8")).hexdigest()[:12]
+    # non-cryptographic: this hash is only a cache-key discriminator, never a security primitive.
+    nh = hashlib.sha1("\n".join(relational_notes or []).encode("utf-8"),
+                      usedforsecurity=False).hexdigest()[:12]
     ckey = mdl + "||" + request + "||" + "|".join(sid for sid, _ in candidates) + "||n:" + nh
     tkey = mdl + "||TASK||" + _norm(request) + "||n:" + nh  # pool-agnostic, text-normalized fallback
     if cache is not None:

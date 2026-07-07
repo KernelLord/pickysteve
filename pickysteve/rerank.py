@@ -36,7 +36,9 @@ class Reranker:
                 self._cache = {}
 
     def _key(self, query: str, text: str) -> str:
-        h = hashlib.md5(f"{self.model_name}\x00{query}\x00{text}".encode("utf-8")).hexdigest()
+        # non-cryptographic: cache-key hash only, never a security primitive.
+        h = hashlib.md5(f"{self.model_name}\x00{query}\x00{text}".encode("utf-8"),
+                        usedforsecurity=False).hexdigest()
         return h
 
     def _flush(self):

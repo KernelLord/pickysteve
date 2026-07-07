@@ -24,7 +24,10 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: python
-          queries: security-and-quality
+          # security-only: this is a security scanner, not a linter. The quality query pack
+          # produces style/lint notes (unused imports, empty-except, mixed-returns) that belong
+          # in a linter, not the Security tab.
+          queries: security-extended
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
