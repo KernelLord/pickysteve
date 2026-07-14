@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.kernellord/pickysteve",
+  "title": "PickySteve",
+  "description": "Skill router and context picker for coding agents — picks the right skill per prompt, scans both the request and every retrieved doc for prompt injection",
+  "repository": {
+    "url": "https://github.com/KernelLord/pickysteve",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "pickysteve",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

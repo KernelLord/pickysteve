@@ -362,3 +362,5 @@ licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 ## License
 
 [MIT](LICENSE). See the `LICENSE` file for the full text.
+
+<!-- mcp-name: io.github.kernellord/pickysteve -->
