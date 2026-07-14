@@ -1,0 +1,15 @@
+{
+  "name": "pickysteve",
+  "description": "PickySteve — skill router and context picker for coding agents, with dual-scan prompt-injection gating.",
+  "owner": { "name": "KernelLord" },
+  "plugins": [
+    {
+      "name": "pickysteve",
+      "source": "./",
+      "description": "Routes each prompt to the right skill via hybrid retrieval + rerank + LLM judge; fail-closed injection gate scans request and retrieved docs. Requires one-time venv setup (see README).",
+      "homepage": "https://github.com/KernelLord/pickysteve",
+      "repository": "https://github.com/KernelLord/pickysteve",
+      "license": "MIT"
+    }
+  ]
+}

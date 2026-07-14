@@ -1,0 +1,18 @@
+{
+  "name": "pickysteve",
+  "displayName": "PickySteve",
+  "version": "0.1.0",
+  "description": "Skill router and context picker for coding agents — picks the right skill per prompt, scans both the request and every retrieved doc for prompt injection.",
+  "author": { "name": "KernelLord" },
+  "homepage": "https://github.com/KernelLord/pickysteve",
+  "repository": "https://github.com/KernelLord/pickysteve",
+  "license": "MIT",
+  "keywords": ["mcp", "skill-router", "context-engineering", "prompt-injection"],
+  "mcpServers": {
+    "pickysteve": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/.venv/bin/python",
+      "args": ["-m", "pickysteve.connectors.mcp_server"],
+      "cwd": "${CLAUDE_PLUGIN_ROOT}"
+    }
+  }
+}

@@ -336,6 +336,16 @@ Config is all environment variables (`PS_*`). See `pickysteve/config.py`.
 
 ## Connect it to your coding agent
 
+Claude Code users can install PickySteve as a plugin (after the venv setup above):
+
+```
+/plugin marketplace add KernelLord/pickysteve
+/plugin install pickysteve@pickysteve
+```
+
+Then build the venv once inside the installed plugin directory (`~/.claude/plugins/cache/pickysteve/…`),
+same two `uv` commands as the quickstart. Everything else uses the connectors directly:
+
 ```bash
 # MCP (Claude Code, Codex, Cursor, Windsurf, Cline, Roo, Gemini CLI, Qwen Code, Goose, ...):
 .venv/bin/python -m pickysteve.connectors.mcp_server      # exposes pick_context + list_skills
