@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "pickysteve": {
+      "command": "${PLUGIN_ROOT}/.venv/bin/python",
+      "args": ["-m", "pickysteve.connectors.mcp_server"],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}
