@@ -28,18 +28,18 @@ when a real Phase 1 failure justifies it.
 ## 30-second quickstart
 
 ```bash
-# from the repo root (Windows; uv 0.10+)
+# from the repo root (uv 0.10+; on Windows the venv python is .venv/Scripts/python.exe — substitute it throughout)
 uv venv --python 3.11 .venv
-uv pip install --python .venv/Scripts/python.exe -r requirements.txt
+uv pip install --python .venv/bin/python -r requirements.txt
 
 # choose your model — local Ollama, OpenAI, Claude, OpenRouter, or any OpenAI-compatible endpoint
-.venv/Scripts/python.exe -m pickysteve.setup
+.venv/bin/python -m pickysteve.setup
 
 # calibrate the reranker floor on the labeled set
-.venv/Scripts/python.exe eval/calibrate.py
+.venv/bin/python eval/calibrate.py
 
 # run one request
-.venv/Scripts/python.exe -m pickysteve "review my Rust endpoint for security and REST design"
+.venv/bin/python -m pickysteve "review my Rust endpoint for security and REST design"
 ```
 
 **Bring your own model.** `python -m pickysteve.setup` asks which model to use and saves it.
@@ -308,25 +308,28 @@ See the "Known limitations" section above and [TEST_REPORT.md](TEST_REPORT.md) �
 ## Setup
 
 ```bash
-# from this directory (Windows; uv 0.10+, Ollama with qwen3:8b running locally)
+# from this directory (uv 0.10+, Ollama with qwen3:8b running locally)
 uv venv --python 3.11 .venv
-uv pip install --python .venv/Scripts/python.exe -r requirements.txt
+uv pip install --python .venv/bin/python -r requirements.txt
 ```
+
+On Windows, the venv python lives at `.venv/Scripts/python.exe`; substitute it in every
+command below.
 
 ## Use
 
 ```bash
 # 1) Calibrate the reranker floor on the labeled set (writes eval/calibrated_floor.json)
-.venv/Scripts/python.exe eval/calibrate.py
+.venv/bin/python eval/calibrate.py
 
 # 2) Run a single request
-.venv/Scripts/python.exe -m pickysteve "review my Rust endpoint for security and REST design"
+.venv/bin/python -m pickysteve "review my Rust endpoint for security and REST design"
 
 # 3) Run the 18 example requests end to end (traces -> logs/runs.jsonl)
-.venv/Scripts/python.exe eval/run_examples.py          # add --no-exec to skip the execution model
+.venv/bin/python eval/run_examples.py          # add --no-exec to skip the execution model
 
 # 4) The mandatory security-gate test
-.venv/Scripts/python.exe tests/test_security_gate.py
+.venv/bin/python tests/test_security_gate.py
 ```
 
 Config is all environment variables (`PS_*`). See `pickysteve/config.py`.
@@ -335,10 +338,10 @@ Config is all environment variables (`PS_*`). See `pickysteve/config.py`.
 
 ```bash
 # MCP (Claude Code, Codex, Cursor, Windsurf, Cline, Roo, Gemini CLI, Qwen Code, Goose, ...):
-.venv/Scripts/python.exe -m pickysteve.connectors.mcp_server      # exposes pick_context + list_skills
+.venv/bin/python -m pickysteve.connectors.mcp_server      # exposes pick_context + list_skills
 
 # OpenAI-compatible proxy (Aider, Hermes, ZeroClaw, ...): point the tool's base URL at :8077/v1
-.venv/Scripts/python.exe -m pickysteve.connectors.http_server     # /pick + /v1/chat/completions
+.venv/bin/python -m pickysteve.connectors.http_server     # /pick + /v1/chat/completions
 ```
 
 Full per-agent config snippets, the one-command installer, and the Obsidian second-brain export
